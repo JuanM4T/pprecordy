@@ -1,0 +1,16 @@
+{
+	"onboarded": false,
+	"gamemode": "",
+	"country": 0,
+	"pages": "",
+	"time": {
+		"absolute_s": 0,
+		"absolute_f": 0,
+		"start": 0,
+		"finish": 1670516928593
+	},
+	"api_key": {
+		"client": "",
+		"secret": ""
+	}
+}
