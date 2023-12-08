@@ -54,10 +54,10 @@ const askStartDate = async () => {
 };
 
 const askFinishDate = async () => {
-    let answer = await question("Do you want to input a time.finish date (if you don't, the program will check using the time and date you ran it as the finishing time) (y/n): ");
+    let answer = await question("Do you want to input a finish date (if you don't, the program will check using the time and date you ran it as the finishing time) (y/n): ");
     if(answer !== '-1') config.time.absolute_f = answer == 'y' ? 1 : 0;
     if(config.time.absolute_f){
-        answer = await question('What is the time.finish date? (YYYY-MM-DD): ');
+        answer = await question('What is the finish date? (YYYY-MM-DD): ');
         if(answer != '-1') config.time.finish = Date.parse(answer);
     } else {
         answer = await question('What is the length of the timeframe? (input number and type of length (y, m, w, d or h), for example 20d): ');
