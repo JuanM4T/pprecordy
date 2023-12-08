@@ -20,7 +20,7 @@ const RecentTopPlays = async (userIds) => {
     const recentPlays = await v2.scores.user.category(userIds[i], 'best',{mode: config.gamemode, limit: 100})
     const UsersTopPlays = []
     for(item in recentPlays){
-      if(Date.parse(recentPlays[item].created_at) > config.time.finish - config.time.start){
+      if(Date.parse(recentPlays[item].created_at) > (config.time.absolute_s ? config.time.start : config.time.finish - config.time.start)){
         UsersTopPlays.push(recentPlays[item])
       }
     }
