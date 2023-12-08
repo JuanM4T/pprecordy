@@ -44,11 +44,14 @@ const askGamemode = async () => {
 };
 
 const askStartDate = async () => {
-    let answer = await question("Do you want to input a start date (if you don't, you'll be asked for the amount of time) (y/n): ");
+    let answer = await question("Do you want to input a start date? (if you don't, you'll be asked for the amount of time) (y/n): ");
     if(answer != '-1') config.time.absolute_s = answer == 'y' ? 1 : 0;
     if(config.time.absolute_s){
         answer = await question('What is the start date? (YYYY-MM-DD): ');
         if(answer != '-1') config.time.start = Date.parse(answer);
+    } else {
+        answer = await question('What is the length of the timeframe? (input number and type of length (y, m, w, d or h), for example 20d): ');
+        if(answer != '-1') config.time.finish = Date.now() - parseTime(answer);
     }
     await askFinishDate();
 };
@@ -59,9 +62,6 @@ const askFinishDate = async () => {
     if(config.time.absolute_f){
         answer = await question('What is the finish date? (YYYY-MM-DD): ');
         if(answer != '-1') config.time.finish = Date.parse(answer);
-    } else {
-        answer = await question('What is the length of the timeframe? (input number and type of length (y, m, w, d or h), for example 20d): ');
-        if(answer != '-1') config.time.finish = Date.now() - parseTime(answer);
     }
     await askPages();
 };
@@ -98,7 +98,3 @@ const questionArc = async () => {
 }
 
 questionArc();
-
-
-
-
