@@ -83,10 +83,11 @@ const main = async () => {
   if(!config.onboarded){ //read config.json parameters from the user
     require('./config.js')
   } else {
-  await login()
-  const userIds = await GetRanking()
-  const topPlays = await RecentTopPlays(userIds)
-  exportcsv(topPlays)
+    (config.time.finish ? "" : config.time.finish = Date.now())
+    await login()
+    const userIds = await GetRanking()
+    const topPlays = await RecentTopPlays(userIds)
+    exportcsv(topPlays)
 }}
 
 main()

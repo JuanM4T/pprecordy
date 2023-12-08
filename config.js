@@ -62,7 +62,7 @@ const askFinishDate = async () => {
     if(config.time.absolute_f){
         answer = await question('What is the finish date? (YYYY-MM-DD): ');
         if(answer != '-1') config.time.finish = Date.parse(answer);
-    }
+    } else config.time.finish = 0;
     await askPages();
 };
 
