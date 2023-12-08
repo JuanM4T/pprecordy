@@ -47,7 +47,7 @@ const askStartDate = async () => {
     let answer = await question("Do you want to input a start date (if you don't, you'll be asked for the amount of time) (y/n): ");
     if(answer != '-1') config.time.absolute_s = answer == 'y' ? 1 : 0;
     if(config.time.absolute_s){
-        answer = await question('What is the time.start date? (YYYY-MM-DD): ');
+        answer = await question('What is the start date? (YYYY-MM-DD): ');
         if(answer != '-1') config.time.start = Date.parse(answer);
     }
     await askFinishDate();
