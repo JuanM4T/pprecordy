@@ -51,7 +51,7 @@ const askStartDate = async () => {
         if(answer != '-1') config.time.start = Date.parse(answer);
     } else {
         answer = await question('What is the length of the timeframe? (input number and type of length (y, m, w, d or h), for example 20d): ');
-        if(answer != '-1') config.time.finish = Date.now() - parseTime(answer);
+        if(answer != '-1') config.time.start = Date.now() - parseTime(answer);
     }
     await askFinishDate();
 };
