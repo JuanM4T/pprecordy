@@ -17,15 +17,10 @@ const GetRanking = async () => {
 const RecentTopPlays = async (userIds) => {
   const RecentTopPlays = []
   for(let i = 0; i < userIds.length; i++){
-    const recentPlays = await v2.scores.user.category(userIds[i], 'best',{mode: config.gamemode, limit: 100})
-    const UsersTopPlays = []
-    for(item in recentPlays){
-      const date = Date.parse(recentPlays[item].created_at);
-      if(date >= config.time.start && (date <= config.time.finish || !config.time.absolute_f)){
-        UsersTopPlays.push(recentPlays[item])
-      }
-    }
-    RecentTopPlays.push(UsersTopPlays)
+    const recentPlays = await v2.scores.user.category(userIds[i], 'best', {mode: config.gamemode, limit: 100}).filter(
+      (score) => score.created_at >= config.time.start && (!config.time.absolute_f || score.created_at <= config.time.finish)
+    )
+    RecentTopPlays.push(RecentPlays)
     console.log("User " + (i+1) + " out of " + userIds.length + " done")
   }
   return Promise.resolve(RecentTopPlays)
